@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-using System;
+﻿using System;
 
 class Complex
 {
@@ -13,15 +11,15 @@ class Complex
         Imaginary = imaginary;
     }
 
-    // Overloading the + operator
-    public static Complex operator +(Complex c1, Complex c2)
+    // Method to add two complex numbers
+    public Complex Add(Complex other)
     {
-        return new Complex(c1.Real + c2.Real, c1.Imaginary + c2.Imaginary);
+        return new Complex(this.Real + other.Real, this.Imaginary + other.Imaginary);
     }
 
-    public override string ToString()
+    public void Display()
     {
-        return $"{Real} {(Imaginary >= 0 ? "+" : "-")} {Math.Abs(Imaginary)}i";
+        Console.WriteLine($"{Real} {(Imaginary >= 0 ? "+" : "-")} {Math.Abs(Imaginary)}i");
     }
 }
 
@@ -32,8 +30,9 @@ class Program
         Complex c1 = new Complex(3.5, 2.5);
         Complex c2 = new Complex(1.5, -4.5);
 
-        Complex sum = c1 + c2;
+        Complex sum = c1.Add(c2);
 
-        Console.WriteLine($"Sum: {sum}");
+        Console.Write("Sum: ");
+        sum.Display();
     }
 }
